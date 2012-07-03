@@ -5,6 +5,7 @@ gem 'databasedotcom'
 gem 'databasedotcom-rails'
 gem 'pg', '0.14.0'
 gem 'therubyracer'
+gem 'bootstrap-sass', '2.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
