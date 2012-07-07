@@ -1,7 +1,5 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <b>Firstname:</b>
+  <b>First Name:</b>
   <%= @lead.FirstName %>
 </p>
 
@@ -15,6 +13,10 @@
   <%= @lead.Company %>
 </p>
 
+<p>
+  <b>Email:</b>
+  <%= @lead.Email %>
+</p>
 
-<%= link_to 'Edit', edit_lead_path(@lead) %> |
-<%= link_to 'Back', leads_path %>
+
+<%= link_to 'Add Another Lead', root_path, class: "btn btn-primary" %>

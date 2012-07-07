@@ -1,5 +1,6 @@
 SfLeadGen::Application.routes.draw do
   resources :leads
+  root to: 'leads#new'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

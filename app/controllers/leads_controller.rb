@@ -2,20 +2,20 @@ class LeadsController < ApplicationController
   include Databasedotcom::Rails::Controller
   # GET /leads
   # GET /leads.json
-  def index
-    @leads = Lead.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @leads }
-    end
-  end
+  # def index
+  #    @leads = Lead.all
+  # 
+  #    respond_to do |format|
+  #      format.html # index.html.erb
+  #      format.json { render json: @leads }
+  #    end
+  #  end
 
   # GET /leads/1
   # GET /leads/1.json
   def show
     @lead = Lead.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @lead }
@@ -34,9 +34,9 @@ class LeadsController < ApplicationController
   end
 
   # GET /leads/1/edit
-  def edit
-    @lead = Lead.find(params[:id])
-  end
+  # def edit
+  #     @lead = Lead.find(params[:id])
+  #   end
 
   # POST /leads
   # POST /leads.json
@@ -46,11 +46,16 @@ class LeadsController < ApplicationController
     @lead['OwnerId'] = '005E0000000epp7IAA' 
     @lead['IsConverted'] = false
     @lead['IsUnreadByOwner'] = true
-
+    # if @lead.save
+    #      flash[:success] = "Salesforce lead was successfully created!"
+    #    else 
+    #      render 'new'
+    #    end
     respond_to do |format|
       if @lead.save
-        format.html { redirect_to @lead, notice: 'Lead was successfully created.' }
+        format.html { redirect_to root_path }
         format.json { render json: @lead, status: :created, location: @lead }
+        flash[:success] = "Salesforce lead was successfully created!"
       else
         format.html { render action: "new" }
         format.json { render json: @lead.errors, status: :unprocessable_entity }
@@ -60,29 +65,29 @@ class LeadsController < ApplicationController
 
   # PUT /leads/1
   # PUT /leads/1.json
-  def update
-    @lead = Lead.find(params[:id])
-
-    respond_to do |format|
-      if @lead.update_attributes(params[:lead])
-        format.html { redirect_to @lead, notice: 'Lead was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @lead.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #    @lead = Lead.find(params[:id])
+  # 
+  #    respond_to do |format|
+  #      if @lead.update_attributes(params[:lead])
+  #        format.html { redirect_to @lead, notice: 'Lead was successfully updated.' }
+  #        format.json { head :no_content }
+  #      else
+  #        format.html { render action: "edit" }
+  #        format.json { render json: @lead.errors, status: :unprocessable_entity }
+  #      end
+  #    end
+  #  end
 
   # DELETE /leads/1
   # DELETE /leads/1.json
-  def destroy
-    @lead = Lead.find(params[:id])
-    @lead.destroy
-
-    respond_to do |format|
-      format.html { redirect_to leads_url }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #     @lead = Lead.find(params[:id])
+  #     @lead.destroy
+  # 
+  #     respond_to do |format|
+  #       format.html { redirect_to leads_url }
+  #       format.json { head :no_content }
+  #     end
+  #   end
 end
